@@ -1,0 +1,89 @@
+import java.util.List;
+import java.io.Serializable;
+
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * The Interface IGenericDAO.
+ * 
+ * @param <T> The class
+ * @param <ID> The database table ID
+ * @version $Id$
+ */
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+public interface IGenericDAO<T, ID extends Serializable> {
+
+    // ===========================================
+    // Constants
+    // ===========================================
+
+    // ===========================================
+    // Methods
+    // ===========================================
+    
+    /**
+     * Finds by id.
+     * 
+     * @param id The id to search for.
+     * @return An object of the class T passed to this DAO in the parameters. 
+     * @throws DALException the DAL exception
+     */
+    T findById(ID id) throws DALException;
+    
+    /**
+     * Delete a record by id.
+     * 
+     * @param id The id of the record to be deleted.
+     * @throws DALException the DAL exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    void deleteById(ID id) throws DALException;
+    
+    /**
+     * Finds all the records in a table.
+     * 
+     * @return The list of all records in the table.
+     * @throws DALException the DAL exception
+     */
+    List<T> findAll() throws DALException;
+    
+    /**
+     * Save a record to the database.
+     * 
+     * @param entity The entity to be saved to the database.
+     * @return The entity after it has been saved to the database. 
+     * @throws DALException The DAL exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    T save(T entity) throws DALException;
+    
+    /**
+     * Save a record that does not already exist in the database or update it if the record already exists.
+     * 
+     * @param entity The entity to commit to the database.
+     * @return The entity after it has been committed to the database.
+     * @throws DALException the DAL exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    T saveOrUpdate(T entity) throws DALException;
+    
+    /**
+     * Update an existing record with new values.
+     * 
+     * @param entity The entity to be updated.
+     * @return The entity after the update is complete
+     * @throws DALException the DAL exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    T update(T entity) throws DALException;
+    
+    /**
+     * Delete a record from the database.
+     * 
+     * @param entity The entity to be removed.
+     * @throws DALException the DAL exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    void delete(T entity) throws DALException;
+}

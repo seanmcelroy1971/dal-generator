@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="ir-dal-generator-default" class="org.apache.log4j.RollingFileAppender">
+        <param name="Threshold" value="INFO"/>
+        <param name="File" value="logs/id-dal-generator.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="25000KB"/>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{DATE} %-5p %-15c.%M: %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="default" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{DATE} %-5p %-15c.%M: %m%n" />
+        </layout>
+    </appender>
+    
+    <logger name="aero">
+        <level value="debug" />
+        <appender-ref ref="ir-dal-generator-default" />
+    </logger>
+    
+    <root>
+        <level value="warn" />
+        <appender-ref ref="default" />
+    </root>
+
+</log4j:configuration>

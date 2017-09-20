@@ -1,0 +1,70 @@
+/**
+ * The Class DALException.
+ * 
+ * @version $Id$
+ */
+public class DALException extends Exception {
+
+    // ===========================================
+    // Public Members
+    // ===========================================
+
+    // ===========================================
+    // Private Members
+    // ===========================================
+    
+    // ===========================================
+    // Static initialisers
+    // ===========================================
+
+    // ===========================================
+    // Constructors
+    // ===========================================
+    
+    /**
+     * Instantiates a new DAL exception.
+     */
+    public DALException() {
+    }
+    
+    /**
+     * Instantiates a new DAL exception.
+     * 
+     * @param message The exception message
+     */
+    public DALException(String message) {
+        super(message);
+    }
+    
+    /**
+     * Instantiates a new DAL exception.
+     * 
+     * @param cause The cause of the exception
+     */
+    public DALException(Throwable cause) {
+        super(cause);
+    }
+    
+    /**
+     * Instantiates a new DAL exception.
+     * 
+     * @param message The exception message
+     * @param cause The cause of the exception
+     */
+    public DALException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    // ===========================================
+    // Public Methods
+    // ===========================================
+
+    // ===========================================
+    // Protected Methods
+    // ===========================================
+
+    // ===========================================
+    // Private Methods
+    // ===========================================
+
+}
